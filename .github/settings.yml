@@ -5,3 +5,4 @@ repository:
   description: This component is responsible for provisioning SAML metadata into AWS IAM as new SAML providers
   homepage: https://cloudposse.com/accelerate
   topics: terraform, terraform-component
+

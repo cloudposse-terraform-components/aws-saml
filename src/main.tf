@@ -15,6 +15,8 @@ module "okta_api_user" {
 
   attributes = [each.key, "oktaapi"]
 
+  attach_permissions_to_group = var.attach_permissions_to_group
+
   context = module.this.context
 }
 

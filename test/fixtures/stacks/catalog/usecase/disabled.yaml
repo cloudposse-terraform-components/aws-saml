@@ -1,0 +1,10 @@
+components:
+  terraform:
+    saml/disabled:
+      metadata:
+        component: target
+      vars:
+        name: "saml-terraform"
+        enabled: false
+        saml_providers:
+          example-gsuite: "../../../SAMLDPMetadata.xml"

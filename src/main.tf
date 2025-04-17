@@ -1,6 +1,6 @@
 locals {
   saml_providers = module.this.enabled ? var.saml_providers : {}
-  okta_providers = toset([for k, v in local.saml_providers : k if length(regexall("(?i:okta)", v)) > 0])
+  okta_providers = toset([for k, v in module.this.enabled ? local.saml_providers : {} : k if length(regexall("(?i:okta)", v)) > 0])
 }
 
 resource "aws_iam_saml_provider" "default" {

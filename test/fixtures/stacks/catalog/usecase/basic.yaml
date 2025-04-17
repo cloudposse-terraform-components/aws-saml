@@ -1,0 +1,9 @@
+components:
+  terraform:
+    saml/basic:
+      metadata:
+        component: target
+      vars:
+        name: "saml-terraform"
+        saml_providers:
+          example-gsuite: "../../../SAMLDPMetadata.xml"

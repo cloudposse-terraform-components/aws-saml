@@ -8,22 +8,21 @@ tags:
 
 # Component: `saml`
 
-This component is responsible for provisioning SAML metadata into AWS IAM as new SAML providers. Additionally, for an
-Okta integration (`okta` must be mentioned in the key given to the `saml_providers` input) it creates an Okta API user
-and corresponding Access Key pair which is pushed into AWS SSM.
-
+This component provisions SAML metadata into AWS IAM as new SAML providers. For Okta integrations (when `okta` is
+included in the key provided to the `saml_providers` input), it also creates an Okta API user and an associated Access
+Key pair, and stores the credentials in AWS SSM Parameter Store.
 ## Usage
 
-**Stack Level**: Global, in the account to which users will log in, typically only `identity`
+Stack Level: Global, in the account to which users will log in, typically only `identity`.
 
 Here's an example snippet for how to use this component.
 
-**IMPORTANT**: The given SAML metadata files must exist at the root of the module.
+IMPORTANT: The given SAML metadata files must exist at the root of the module.
 
 ```yaml
 components:
   terraform:
-    saml:
+    aws-saml:
       vars:
         enabled: true
         saml_providers:
@@ -33,7 +32,10 @@ components:
 ```
 
 <!-- prettier-ignore-start -->
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- prettier-ignore-end -->
+
+
+<!-- markdownlint-disable -->
 ## Requirements
 
 | Name | Version |
@@ -96,12 +98,17 @@ components:
 | <a name="output_okta_api_users"></a> [okta\_api\_users](#output\_okta\_api\_users) | Map of OKTA API Users |
 | <a name="output_saml_provider_arns"></a> [saml\_provider\_arns](#output\_saml\_provider\_arns) | Map of SAML provider names to provider ARNs |
 | <a name="output_saml_provider_assume_role_policy"></a> [saml\_provider\_assume\_role\_policy](#output\_saml\_provider\_assume\_role\_policy) | JSON "assume role" policy document to use for roles allowed to log in via SAML |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-<!-- prettier-ignore-end -->
+<!-- markdownlint-restore -->
+
+
 
 ## References
 
-- [cloudposse/terraform-aws-components](https://github.com/cloudposse/terraform-aws-components/tree/main/modules/sso) -
-  Cloud Posse's upstream component
 
-[<img src="https://cloudposse.com/logo-300x69.svg" height="32" align="right"/>](https://cpco.io/component)
+- [cloudposse-terraform-components](https://github.com/orgs/cloudposse-terraform-components/repositories) - Cloud Posse's upstream component
+
+
+
+
+[<img src="https://cloudposse.com/logo-300x69.svg" height="32" align="right"/>](https://cpco.io/homepage?utm_source=github&utm_medium=readme&utm_campaign=cloudposse-terraform-components/aws-saml&utm_content=)
+
